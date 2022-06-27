@@ -5,10 +5,14 @@ const schoolSlice = createSlice({
   name: "school",
   initialState: {
     studentsData: [],
+    nameFilter: "",
   },
   reducers: {
     setSchoolData(state, action) {
       state.studentsData = action.payload;
+    },
+    setNameFilter(state, action) {
+      state.nameFilter = action.payload;
     },
   },
 });
