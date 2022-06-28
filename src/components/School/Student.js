@@ -1,6 +1,7 @@
 import { useState } from "react";
 import classes from "./Student.module.css";
 import Tags from "./../Tags/Tags";
+import AccordionButton from "../UI/AccordionButton";
 
 const Student = (props) => {
   const [isActive, setIsActive] = useState(false);
@@ -24,6 +25,7 @@ const Student = (props) => {
             <p>Email: {props.studentDetails.email}</p>
             <p>Company: {props.studentDetails.company}</p>
             <p>Phone: {props.studentDetails.phone}</p>
+            {/* Accordion Content */}
             {isActive && (
               <div className={classes.geoDetails}>
                 <p>{props.studentDetails.geo.lat}</p>
@@ -41,11 +43,11 @@ const Student = (props) => {
             <Tags studentId={props.studentDetails.id} />
           </div>
         </div>
-        <div className={classes.accordionButton}>
-          <button onClick={accordionButtonClickHandler}>
-            {isActive ? "-" : "+"}
-          </button>
-        </div>
+        {/* Accordion Button Component */}
+        <AccordionButton
+          isActive={isActive}
+          accordionButtonClickHandler={accordionButtonClickHandler}
+        />
       </div>
     </li>
   );

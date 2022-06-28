@@ -38,12 +38,6 @@ li:not(:first-child) {
   color: #555;
 }
 
-.accordionButton {
-  position: absolute;
-  top: 0.15rem;
-  right: 1rem;
-}
-
 .geoDetails {
   font-size: 0.8rem;
   line-height: 0.5rem;
