@@ -5,18 +5,30 @@ const schoolSlice = createSlice({
   name: "school",
   initialState: {
     studentsData: [],
-    nameFilter: "",
-    tagFilter: "",
+    nameFilter: { value: "", isTouched: false },
+    tagFilter: { value: "", isTouched: false },
   },
   reducers: {
     setStudentsData(state, action) {
       state.studentsData = action.payload;
     },
-    setNameFilter(state, action) {
-      state.nameFilter = action.payload;
+    setNameFilterValue(state, action) {
+      state.nameFilter.value = action.payload;
     },
-    setTagFilter(state, action) {
-      state.tagFilter = action.payload;
+    setTagFilterValue(state, action) {
+      state.tagFilter.value = action.payload;
+    },
+    setNameFilterIsTouched(state) {
+      state.nameFilter.isTouched = true;
+    },
+    setTagFilterIsTouched(state) {
+      state.tagFilter.isTouched = true;
+    },
+    setNameFilterNotTouched(state) {
+      state.nameFilter.isTouched = false;
+    },
+    setTagFilterNotTouched(state) {
+      state.tagFilter.isTouched = false;
     },
     updateStudentsDataWithTag(state, action) {
       const updatedStudents = [];

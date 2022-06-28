@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import Student from "./Student";
 
 const Students = (props) => {
-  const nameFilter = useSelector((state) => state.school.nameFilter);
-  const tagFilter = useSelector((state) => state.school.tagFilter);
+  const nameFilter = useSelector((state) => state.school.nameFilter.value);
+  const tagFilter = useSelector((state) => state.school.tagFilter.value);
 
   const nameFilteredStudents = props.studentsData.filter(
     (student) =>

@@ -6,6 +6,7 @@ import StudentList from "./../School/StudentList";
 
 const Wrapper = () => {
   const studentsData = useSelector((state) => state.school.studentsData);
+
   return (
     <Card>
       <Filters />
