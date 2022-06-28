@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import Filters from "../Filters/Filters";
 
 const Layout = (props) => {
   return (

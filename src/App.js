@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 
 import Layout from "./components/Layout/Layout";
-import Students from "./components/School/Students";
+import Header from "./components/Filters/Filters";
+import StudentList from "./components/School/StudentList";
 import Notification from "./components/UI/Notification";
+import Wrapper from "./components/Layout/Wrapper";
 import { uiActions } from "./store/ui-slice";
 import { fetchStudentData } from "./store/school-slice";
 
@@ -103,7 +105,13 @@ function App() {
         />
       )}
       <Layout>
-        {isLoading ? <p>Loading</p> : <Students studentsData={studentsData} />}
+        {/* <Header /> */}
+        {isLoading ? (
+          <p>Loading</p>
+        ) : (
+          // <StudentList studentsData={studentsData} />
+          <Wrapper />
+        )}
         {error && <p>Something went wrong</p>}
       </Layout>
     </Fragment>

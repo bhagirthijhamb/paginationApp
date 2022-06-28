@@ -6,13 +6,29 @@ const schoolSlice = createSlice({
   initialState: {
     studentsData: [],
     nameFilter: "",
+    tagFilter: "",
   },
   reducers: {
-    setSchoolData(state, action) {
+    setStudentsData(state, action) {
       state.studentsData = action.payload;
     },
     setNameFilter(state, action) {
       state.nameFilter = action.payload;
+    },
+    setTagFilter(state, action) {
+      state.tagFilter = action.payload;
+    },
+    updateStudentsDataWithTag(state, action) {
+      const updatedStudents = [];
+      const updatedTags = [];
+      state.studentsData.forEach((student) => {
+        if (student.id === action.payload.id) {
+          updatedTags.push(action.payload.tag);
+          student.tags = student.tags.concat(updatedTags);
+        }
+        updatedStudents.push(student);
+      });
+      state.studentsData = updatedStudents;
     },
   },
 });
@@ -45,6 +61,7 @@ export const fetchStudentData = () => {
           company: item.company.name,
           phone: item.phone,
           geo: item.address.geo,
+          tags: [],
         });
       }
 
@@ -52,8 +69,8 @@ export const fetchStudentData = () => {
     };
 
     try {
-      const schoolData = await fetchData();
-      dispatch(schoolActions.setSchoolData(schoolData));
+      const studentsData = await fetchData();
+      dispatch(schoolActions.setStudentsData(studentsData));
       dispatch(
         uiActions.showNotification({
           status: "success",
